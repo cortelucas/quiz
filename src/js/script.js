@@ -1,4 +1,5 @@
 let currentQuestion = 0;
+let correctAnswers = 0;
 
 showQuestion();
 
@@ -27,4 +28,15 @@ function showQuestion() {
   } else {
 
   }
+}
+
+function optionClickEvent(e) {
+  let clickedOption = parseInt(e.target.getAttribute('data-opt'));
+
+  if (questions[currentQuestion].answer === clickedOption) {
+    correctAnswers++;
+  } 
+  
+  currentQuestion ++;
+  showQuestion();
 }
