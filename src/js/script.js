@@ -8,6 +8,8 @@ function showQuestion() {
     let q = questions[currentQuestion];
     let options = q.options;
     let fieldOptions = document.querySelector('.options');
+
+    showProgressBar();
     
     document.querySelector('.scoreArea').style.display = 'none';
     document.querySelector('.questionArea').style.display = 'block';
@@ -39,4 +41,11 @@ function optionClickEvent(e) {
   
   currentQuestion ++;
   showQuestion();
+}
+
+function showProgressBar() {
+  let percent = Math.floor((currentQuestion / questions.length) * 100);
+  let progressBar = document.querySelector('.progress--bar');
+
+  progressBar.style.width = `${percent}%`;
 }
