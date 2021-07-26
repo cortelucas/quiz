@@ -28,7 +28,7 @@ function showQuestion() {
     });
 
   } else {
-
+    finishQuiz();
   }
 }
 
@@ -48,4 +48,27 @@ function showProgressBar() {
   let progressBar = document.querySelector('.progress--bar');
 
   progressBar.style.width = `${percent}%`;
+}
+
+function finishQuiz() {
+  let points = Math.floor((correctAnswers / questions.length) *100);
+
+  if (points < 30) {
+    document.querySelector('.scoreText1').innerHTML = `Ta ruim em!?`
+    document.querySelector('.scorePCt').style.color = '#FF0000';
+  } else if (points >= 30 && points < 70) {
+    document.querySelector('.scoreText1').innerHTML = `Muito Bom!`
+    document.querySelector('.scorePCt').style.color = '#FFFF00';
+  } else if (points >= 70) {
+    document.querySelector('.scoreText1').innerHTML = `Excelente!!!!`
+    document.querySelector('.scorePCt').style.color = '#0D630D';
+  }
+
+  document.querySelector('.scorePCt').innerHTML = `Acertou ${points}%`
+  document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} e acertou ${correctAnswers}!`
+
+  document.querySelector('.scoreArea').style.display = 'block';
+  document.querySelector('.questionArea').style.display = 'none';
+
+  document.querySelector('.progress--bar').style.width = `100%`;
 }
